@@ -45,7 +45,7 @@ def solve(component):
             A[i+1][i+1] = 1
             A[i+1][len(component)] = -1*component[i].resistance
 
-    if component[len(component)-1].type == "b":
+    if component[len(component)-2].type == "b":
         A[len(component)][0] = -1
         A[len(component)][len(component)-1] = 1
 
