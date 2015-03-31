@@ -3,17 +3,17 @@
 # Lesson: Circuits               #
 # Filename: circuitsolverDoc.txt #
 # Original Author: Jesse Chang   #
-# Most Recent Edit: 3/30/2015    #
-# Last Editor: Jesse Chang       #
+# Most Recent Edit: 3/31/2015    #
+# Last Editor: Sherri Green      #
 ##################################
 
 -- Project 1 Documentation -- 
 
 This Circuit Solver code solves circuits consisting of two types of components, resistors and batteries. The solver assumes that all components are connected in series, and that no combination of components are in parallel. Class definitions for both components are included in the code. 
 
-Upon instantiation, the user will be prompted to enter the components in the circuit, in order from the ground node and assuming that the current flows in the positive direction across that component. Users will also be prompted to enter a value for the resistance or voltage of the component. All values will be made into floats upon entry. When the user has finished entering components, they may enter the string "none" to halt entry. Because the user input is so heavily text based, if the user enters a string that is neither "resistor", "capacitor" or "none", a message will appear instructing the user to try again.
+Upon instantiation, the user will be prompted to enter the components in the circuit, in order from the ground node and assuming that the current flows in the positive direction across that component. Users will also be prompted to enter a value for the resistance or voltage of the component. All values will be made into floats upon entry. When the user has finished entering components, they may enter the string "none" to halt entry. Because the user input is so heavily text based, if the user enters a string that is neither "resistor", “battery” or "none", a message will appear instructing the user to try again.
 
-Once the user has completed entry, the shell will then return the current through the circuit(since there is only one), as well as the voltages relative to ground at the nodes between each component.
+Once the user has completed entry, the shell will then return the current through the circuit(since there is only one), as well as the voltages relative to ground at the nodes between each component in the order of ground Voltage, then the voltage of each node, then current.
 
 For debugging purposes, Resistor and Battery objects when printed will return their type (resistor or battery), and their value (resistance or voltage). 
 
