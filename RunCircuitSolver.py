@@ -3,8 +3,7 @@
 #3/31/15
 ###################
 import numpy as np
-from circuit_solver_classes import Resistor, Battery
-from CircuitSolver import solve
+from CircuitSolver import *
 
 component = []
 print "Please enter the components in your circuit."
@@ -26,5 +25,5 @@ while takingInputs:
 
 for i in range(len(component)):
     print component[i]
-    return component   
-solve(component)
+print component, "hello"     
+print solve(component)

@@ -45,11 +45,11 @@ def solve(component):
             A[i+1][i+1] = 1
             A[i+1][len(component)] = -1*component[i].resistance
 
-    if component[len(component)-2].type == "b":
+    if component[len(component)-1].type == "b":
         A[len(component)][0] = -1
         A[len(component)][len(component)-1] = 1
 
-        b[len(component)] = component[len(component)-1].voltage
+        b[len(component)-1] = component[len(component)-1].voltage
 
     else:
         A[len(component)][0] = -1
