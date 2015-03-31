@@ -37,7 +37,7 @@ def solve(component):
             A[i+1][i] = 1                #negative terminal voltage should be -1 as coeff
             A [i+1][i+1] = -1              #positive terminal voltage should be 1 as coeff
             
-            b[i] = component[i].voltage
+            b[i+1] = component[i].voltage
 
         else:
 
@@ -53,21 +53,16 @@ def solve(component):
 
     else:
         A[len(component)][0] = -1
-        A[len(component)-1][len(component)-1] = 1
-        A[len(component)-1][len(component)] = -1*component[len(component)].resistance
+        A[len(component)][len(component)-1] = 1
+        A[len(component)][len(component)] = -1*component[len(component)-1].resistance
 
 
-    return A, b
+    #return A, b
     #return b
- #   x = np.linalg.solve(A,b)
-    #return x
+    x = np.linalg.solve(A,b)
+    return x
     
             
-r1 = Resistor(4)
-r2 = Resistor(5)
-b1 = Battery(6)
-b2 = Battery(7)
-circuit = np.array([r1, r2, b1, b2])
-print solve(circuit)           
+          
                         
         
