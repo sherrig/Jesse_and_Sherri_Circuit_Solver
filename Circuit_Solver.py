@@ -66,7 +66,7 @@ def solve (components):                                                 #list of
         
     #print "A =", A
     #print "b = ", b
-    solved = np.linalg.solve(A,b)#Ax=b. this gives x
+    solved = np.linalg.solve(A,b)                                       #Ax=b. this gives x
     solutions = {}
     #print x, solved
     for i in range(len(nodes)):
