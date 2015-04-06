@@ -13,7 +13,7 @@ class R:                                                            #Create Resi
         self.name = name
         self.posnode = posnode
         self.negnode = negnode
-        self.resistance = float(resistance)
+        self.resistance = float(abs(resistance))
         self.ref = {self.posnode:1, self.negnode: -1, 'current': -self.resistance, "c" : 0}
         
 
@@ -66,21 +66,26 @@ def solve (components):                                                 #list of
         
     #print "A =", A
     #print "b = ", b
-    solved = np.linalg.solve(A,b)                                       #Ax=b. this gives x
+    solved = np.linalg.solve(A,b)#Ax=b. this gives x
+    solutions = {}
     #print x, solved
     for i in range(len(nodes)):
+        solutions[nodes[i]] = solved[i]                                 #puts node into dictionary with voltage (as an array) as reference
         print "the voltage at ", nodes[i], " is " , solved[i]
     for i in range(len(components)):
+        solutions[components[i].name] = solved[len(nodes)+i]            #puts component into dictionary with current (as array) as reference
         print "the current across ", components[i].name, " is ", solved[len(nodes)+i]
+    return solutions
 
     
 ##Testing
         
-##r1 = R("r1", "e1", "e0", 4)
-##b1 = B("b1", "e0", "gnd", 7)
-##r2 = R("r2", "e1", "gnd", 2)
-##r3 = R("r3", "e1", "gnd", 6)
-##b2 = B ("b2", "e1", "gnd", 3)
-##components = [r1, b1, r2, r3, b2]
-##components_dict = {"r1":r1,"r2":r2,"r3":r3,"b1":b1,"b2":b2}
-##solve(components)
+r1 = R("r1", "e1", "e0", -4)
+b1 = B("b1", "e0", "gnd", -7)
+r2 = R("r2", "e1", "gnd", 2)
+r3 = R("r3", "e1", "gnd", 6)
+b2 = B ("b2", "e1", "gnd", 3)
+components = [r1, b1, r2, r3, b2]
+components_dict = {"r1":r1,"r2":r2,"r3":r3,"b1":b1,"b2":b2}
+sol = solve(components)
+##print sol
