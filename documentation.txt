@@ -1,0 +1,43 @@
+#################################
+# Title: Project 1 Documentation#
+# Lesson: Circuits		#
+# Filename: documentation.txt	#
+# Original Author: Jesse Chang	#
+# Most Recent Edit: 4/6/2015	#
+# Last Editor: Jesse Chang      #
+#################################
+
+-- Circuit Solver Documentation --
+
+The code for the circuit solver asks the user to instantiate each device in an arbitrary circuit as either a Resistor object (R) or a Battery object (B). Class definitions for both types of components are included in the code. 
+
+Upon instatiation, the user will have to designate a name for the device, a positive node attribute, and a negative node attribute, all of which are to be passed in as strings. If two devices have identical strings for either one of the node arguments, they will be assumed to be connected at that node. The ground node should be passed in as the string 'gnd', and all other voltages generated will be in reference to that node. All other nodes may be named arbitrarily.Users should note that it will be assumed that the current flows from the positive node to the negative node. In the case of a battery, these will correspond to the positive and negative terminals of the battery. 
+
+To operate the circuit solver, the user must compile the device instances that compose the circuit into a list of such components, which is then to be passed into the method solve(). A tuple will not work; a list must be used to compile all of the components in a given circuit system. To operate, the user simply calls the solve function, passing to it a list of aforementioned components.
+
+-- Example Operation --
+
+The following code provides the user with the solution values corresponding to a circuit composed of a single battery connected in parallel with a single resistor.
+
+r1 = R("r1", "e1", "gnd", 4)
+b1 = B("b1", "e1", "gnd", 7)
+components = [r1, b1]
+solution = solve(components)
+
+The output in the above code is denoted 'solution' and is first printed in a user friendly format, and then returned as a dictionary mapping the string representations of the nodes and the components to the voltages relative to ground and the current across those nodes, respectively. Notice that ground is represented with the string 'gnd'
+
+-- Classes --
+
+R(name, posnode, negnode, resistance):
+	create an object of type resistor. name, posnode, and negnode should all be strings. resistance should be passed in as a positive float, but the code will always use the absolute value of the resistance passed in.
+
+B(name, posnode, negnode, voltage):
+	create an object of type battery. name, posnode, and negnode should all be strings. voltage may be passed in as either a negative or positice value.
+
+-- Functions --
+
+get_nodes(components):
+	takes a list of components as a parameter. returns a list of the string representations of all the unique nodes in the list given.
+
+solve(components):
+	takes a list of components as a parameter. prints out a series of user friendly strings representing the voltages at each unique node relative to the user-specified ground, as well as the currents flowing across each component, from the designated positive node to the designated negative node. returns a dictionary mapping the string representations of the nodes to the voltages at those nodes relative to ground, and the names of the components to the currents flowing across those components from the positive node to the negative node.
