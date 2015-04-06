@@ -79,13 +79,13 @@ def solve (components):                                                 #list of
 
     
 ##Testing
-        
-r1 = R("r1", "e1", "e0", -4)
-b1 = B("b1", "e0", "gnd", -7)
-r2 = R("r2", "e1", "gnd", 2)
-r3 = R("r3", "e1", "gnd", 6)
-b2 = B ("b2", "e1", "gnd", 3)
-components = [r1, b1, r2, r3, b2]
-components_dict = {"r1":r1,"r2":r2,"r3":r3,"b1":b1,"b2":b2}
-sol = solve(components)
+##        
+##r1 = R("r1", "e1", "e0", -4)
+##b1 = B("b1", "e0", "gnd", -7)
+##r2 = R("r2", "e1", "gnd", 2)
+##r3 = R("r3", "e1", "gnd", 6)
+##b2 = B ("b2", "e1", "gnd", 3)
+##components = [r1, b1, r2, r3, b2]
+##components_dict = {"r1":r1,"r2":r2,"r3":r3,"b1":b1,"b2":b2}
+##sol = solve(components)
 ##print sol
