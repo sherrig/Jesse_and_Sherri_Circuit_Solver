@@ -1,0 +1,42 @@
+#################################
+# Title: Project 1 Documentation#
+# Lesson: Circuits		#
+# Filename: project_1_doc.txt	#
+# Original Author: Joe Griffin	#
+# Most Recent Edit: 1/20/2014	#
+# Last Editor: Joe Griffin      #
+#################################
+
+-- Project 1 Solution Documentation --
+
+The solution code for project 1 implements a netlist format in which the user is asked to instantiate each device as either a
+Resistor or a Battery. Class definitions for both components are included in the code.
+Upon instantiation, the user will have to designate a positive node attribute, e2, and a negative node attribute, e1. These nodes
+are to be passed as distinct strings, and devices will be assumed to be connected if they have identical strings passed to their
+node arguments.
+Users will also have to provide unique current strings for each device. The strings passed for current should be unique to each
+device, regardless if the user can determine trivially that two device currents will be identical. It is important to note here
+that current will always be assumed to flow from the node e2 to the node e1. In the case of a battery, e2 serves as the positive
+terminal and e1 as the negative terminal. Thus, for batteries that discharge into the circuit, reported current will be negative
+if battery voltage is positive. Resistors may have positive or negative current values, depending on the polarity of their nodes.
+To operate the circuit solver, the user must compile the device instances that compose the circuit into an iterable data format.
+The format need not be mutable, i.e., a tuple may be used instead of a list. However, it must be possible to iterate over the
+device list multiple times. A generator object is not useable for this role. To operate, the user simply calls the solveCircuit
+function, passing it the device list and one of the strings used for the node declarations earlier. The corresponding node will
+serve as the ground node, with all other node voltages given in reference to it.
+
+-- Example Operation --
+
+The following code provides the user with the solution values corresponding to a circuit composed of a single battery connected to
+a single resistor.
+
+V = batteryVoltage = 5	# Voltage given in volts
+R = resistance = 10	# Resistance given in ohms
+bat = Battery(V, 'hot', 'gnd', 'batCur')
+res = Resistor(R, 'hot', 'gnd', 'resCur')
+devices = (res, bat)
+solution = solveCircuit(devices, 'gnd') # Current values returned in amps
+
+The output in the above code is denoted `solution`, and is returned as a dictionary mapping the variables entered by the user to
+their values as determined by the solver. In this particular circuit, the variable 'batCur' is negative, indicating that current
+flows out of the positive terminal of the battery.
